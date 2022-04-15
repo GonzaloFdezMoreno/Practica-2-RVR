@@ -4,7 +4,7 @@
 #include <netdb.h>
 #include <string.h>
 
-int main(int argc, char **argv){
+int main (int argc, char **argv) {
     struct addrinfo hints;
     struct addrinfo *result;
 
@@ -20,11 +20,11 @@ int main(int argc, char **argv){
         return -1;
     }
 
-    for(struct addrinfo *i = result; i != nullptr; i = i->ai_next){
+    for(struct addrinfo *i = result; i != NULL; i = i->ai_next){
         char host[NI_MAXHOST];
         char serv[NI_MAXSERV];
 
-        int getnameinfo(i->ai_addr, i->ai_addrlen, host, NI_MAXHOST, serv, NI_MAXSERV, NI_NUMERICHOST | NI_NUMERICSERV);
+        getnameinfo(i->ai_addr, i->ai_addrlen, host, NI_MAXHOST, serv, NI_MAXSERV, NI_NUMERICHOST | NI_NUMERICSERV);
         
         std::cout << "HOST: " << host << "\t PORT: " << serv << std::endl;
 
